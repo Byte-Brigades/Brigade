@@ -84,3 +84,325 @@ int main() {
 
     return 0;
 }
+#include <stdio.h>
+
+int main() {
+    int choice;
+
+    printf("====================================\n");
+    printf("         Welcome to Hotel XYZ       \n");
+    printf("====================================\n");
+    printf(" Menu Categories:\n");
+    printf(" 1. Breakfast\n");
+    printf(" 2. Lunch\n");
+    printf(" 3. Dinner\n");
+    printf(" 4. Exit\n");
+    printf("====================================\n");
+
+    printf("Enter your choice (1-4): ");
+    scanf("%d", &choice);
+
+    switch(choice) {
+        case 1:
+            printf("\n--- Breakfast Menu ---\n");
+            printf("1. Idli & Sambar........Rs.40\n");
+            printf("2. Dosa..................Rs.50\n");
+            printf("3. Poha..................Rs.35\n");
+            printf("4. Tea...................Rs.15\n");
+            printf("5. Coffee................Rs.20\n");
+            break;
+
+        case 2:
+            printf("\n--- Lunch Menu ---\n");
+            printf("1. Veg Thali.............Rs.120\n");
+            printf("2. Chicken Curry & Rice..Rs.180\n");
+            printf("3. Dal Fry & Roti........Rs.100\n");
+            printf("4. Paneer Masala & Naan..Rs.160\n");
+            break;
+
+        case 3:
+            printf("\n--- Dinner Menu ---\n");
+            printf("1. Veg Fried Rice........Rs.90\n");
+            printf("2. Chicken Biryani.......Rs.200\n");
+            printf("3. Chapati & Sabzi.......Rs.80\n");
+            printf("4. Curd Rice..............Rs.70\n");
+            break;
+
+        case 4:
+            printf("Thank you for visiting Hotel XYZ!\n");
+            break;
+
+        default:
+            printf("Invalid choice. Please enter a number between 1 and 4.\n");
+    }
+
+    return 0;
+}
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX 100
+
+typedef struct {
+    int roll;
+    char name[50];
+    float marks;
+} Student;
+
+Student students[MAX];
+int count = 0;
+
+// Function to add a student
+void addStudent() {
+    if (count >= MAX) {
+        printf("Cannot add more students!\n");
+        return;
+    }
+
+    printf("Enter roll number: ");
+    scanf("%d", &students[count].roll);
+    getchar(); // Clear newline
+
+    printf("Enter name: ");
+    fgets(students[count].name, sizeof(students[count].name), stdin);
+    students[count].name[strcspn(students[count].name, "\n")] = '\0'; // Remove newline
+
+    printf("Enter marks: ");
+    scanf("%f", &students[count].marks);
+
+    count++;
+    printf("Student added successfully.\n");
+}
+
+// Function to display all students
+void displayStudents() {
+    if (count == 0) {
+        printf("No records to display.\n");
+        return;
+    }
+
+    printf("\n%-10s %-20s %-10s\n", "Roll", "Name", "Marks");
+    for (int i = 0; i < count; i++) {
+        printf("%-10d %-20s %-10.2f\n", students[i].roll, students[i].name, students[i].marks);
+    }
+}
+
+// Function to search a student by roll number
+void searchStudent() {
+    int roll;
+    printf("Enter roll number to search: ");
+    scanf("%d", &roll);
+
+    for (int i = 0; i < count; i++) {
+        if (students[i].roll == roll) {
+            printf("Student Found:\n");
+            printf("Roll: %d\n", students[i].roll);
+            printf("Name: %s\n", students[i].name);
+            printf("Marks: %.2f\n", students[i].marks);
+            return;
+        }
+    }
+    printf("Student with roll number %d not found.\n", roll);
+}
+
+// Function to delete a student
+void deleteStudent() {
+    int roll;
+    printf("Enter roll number to delete: ");
+    scanf("%d", &roll);
+
+    int found = 0;
+    for (int i = 0; i < count; i++) {
+        if (students[i].roll == roll) {
+            found = 1;
+            for (int j = i; j < count - 1; j++) {
+                students[j] = students[j + 1];
+            }
+            count--;
+            printf("Student deleted successfully.\n");
+            break;
+        }
+    }
+    if (!found) {
+        printf("Student with roll number %d not found.\n", roll);
+    }
+}
+
+// Menu function
+void menu() {
+    printf("\n--- Student Management System ---\n");
+    printf("1. Add Student\n");
+    printf("2. Display Students\n");
+    printf("3. Search Student by Roll\n");
+    printf("4. Delete Student\n");
+    printf("5. Exit\n");
+    printf("---------------------------------\n");
+}
+
+int main() {
+    int choice;
+
+    while (1) {
+        menu();
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: addStudent(); break;
+            case 2: displayStudents(); break;
+            case 3: searchStudent(); break;
+            case 4: deleteStudent(); break;
+            case 5: printf("Exiting...\n"); exit(0);
+            default: printf("Invalid choice. Try again.\n");
+        }
+    }
+
+    return 0;
+}
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX 100
+
+typedef struct {
+    int accNumber;
+    char name[50];
+    float balance;
+} Account;
+
+Account accounts[MAX];
+int accCount = 0;
+
+void createAccount() {
+    if (accCount >= MAX) {
+        printf("Maximum number of accounts reached.\n");
+        return;
+    }
+
+    printf("Enter Account Number: ");
+    scanf("%d", &accounts[accCount].accNumber);
+
+    getchar();
+    printf("Enter Account Holder Name: ");
+    fgets(accounts[accCount].name, 50, stdin);
+    accounts[accCount].name[strcspn(accounts[accCount].name, "\n")] = '\0';
+
+    printf("Enter Initial Deposit Amount: ");
+    scanf("%f", &accounts[accCount].balance);
+
+    accCount++;
+    printf("Account created successfully!\n");
+}
+
+void viewAllAccounts() {
+    if (accCount == 0) {
+        printf("No accounts available.\n");
+        return;
+    }
+
+    printf("\n%-10s %-20s %-10s\n", "Acc No", "Name", "Balance");
+    for (int i = 0; i < accCount; i++) {
+        printf("%-10d %-20s %-10.2f\n", accounts[i].accNumber, accounts[i].name, accounts[i].balance);
+    }
+}
+
+void depositMoney() {
+    int accNum;
+    float amount;
+
+    printf("Enter account number to deposit into: ");
+    scanf("%d", &accNum);
+
+    for (int i = 0; i < accCount; i++) {
+        if (accounts[i].accNumber == accNum) {
+            printf("Enter amount to deposit: ");
+            scanf("%f", &amount);
+            if (amount <= 0) {
+                printf("Invalid amount.\n");
+                return;
+            }
+            accounts[i].balance += amount;
+            printf("Deposit successful. New balance: %.2f\n", accounts[i].balance);
+            return;
+        }
+    }
+
+    printf("Account not found.\n");
+}
+
+void withdrawMoney() {
+    int accNum;
+    float amount;
+
+    printf("Enter account number to withdraw from: ");
+    scanf("%d", &accNum);
+
+    for (int i = 0; i < accCount; i++) {
+        if (accounts[i].accNumber == accNum) {
+            printf("Enter amount to withdraw: ");
+            scanf("%f", &amount);
+            if (amount <= 0 || amount > accounts[i].balance) {
+                printf("Invalid amount or insufficient balance.\n");
+                return;
+            }
+            accounts[i].balance -= amount;
+            printf("Withdrawal successful. Remaining balance: %.2f\n", accounts[i].balance);
+            return;
+        }
+    }
+
+    printf("Account not found.\n");
+}
+
+void searchAccount() {
+    int accNum;
+    printf("Enter account number to search: ");
+    scanf("%d", &accNum);
+
+    for (int i = 0; i < accCount; i++) {
+        if (accounts[i].accNumber == accNum) {
+            printf("\nAccount Found:\n");
+            printf("Account Number: %d\n", accounts[i].accNumber);
+            printf("Name: %s\n", accounts[i].name);
+            printf("Balance: %.2f\n", accounts[i].balance);
+            return;
+        }
+    }
+
+    printf("Account not found.\n");
+}
+
+void menu() {
+    printf("\n--- Bank Management System ---\n");
+    printf("1. Create New Account\n");
+    printf("2. View All Accounts\n");
+    printf("3. Deposit Money\n");
+    printf("4. Withdraw Money\n");
+    printf("5. Search Account\n");
+    printf("6. Exit\n");
+    printf("--------------------------------\n");
+}
+
+int main() {
+    int choice;
+
+    while (1) {
+        menu();
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: createAccount(); break;
+            case 2: viewAllAccounts(); break;
+            case 3: depositMoney(); break;
+            case 4: withdrawMoney(); break;
+            case 5: searchAccount(); break;
+            case 6: printf("Thank you for using our system!\n"); exit(0);
+            default: printf("Invalid choice. Try again.\n");
+        }
+    }
+
+    return 0;
+}
