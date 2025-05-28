@@ -96,7 +96,8 @@ int main() {
     printf(" 1. Breakfast\n");
     printf(" 2. Lunch\n");
     printf(" 3. Dinner\n");
-    printf(" 4. Exit\n");
+    printf(" 4.snacks\n");
+    printf(" 5. Exit\n");
     printf("====================================\n");
 
     printf("Enter your choice (1-4): ");
@@ -128,12 +129,19 @@ int main() {
             printf("4. Curd Rice..............Rs.70\n");
             break;
 
-        case 4:
+	case 4;
+	printf("\n--- snacks Menu ---\n");
+	printf("1. samosa...........Rs.15\n");
+	printf("2. kachori..........RS.20\n");
+	printf("3. aloo bonda........Rs.25\n");
+	break;
+
+        case 5:
             printf("Thank you for visiting Hotel XYZ!\n");
             break;
 
         default:
-            printf("Invalid choice. Please enter a number between 1 and 4.\n");
+            printf("Invalid choice. Please enter a number between 1 and 5.\n");
     }
 
     return 0;
@@ -552,3 +560,29 @@ int main() {
 
     return 0;
 }
+#include <stdio.h>
+
+int main() {
+    float principal, rate, time, simpleInterest;
+
+    // Prompt user to enter principal amount
+    printf("Enter the principal amount: ");
+    scanf("%f", &principal);
+
+    // Prompt user to enter rate of interest
+    printf("Enter the rate of interest (in %%): ");
+    scanf("%f", &rate);
+
+    // Prompt user to enter time period
+    printf("Enter the time period (in years): ");
+    scanf("%f", &time);
+
+    // Calculate simple interest
+    simpleInterest = (principal * rate * time) / 100;
+
+    // Display the result
+    printf("Simple Interest = %.2f\n", simpleInterest);
+
+    return 0;
+}
+
