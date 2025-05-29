@@ -478,7 +478,7 @@ void depositMoney() {
                 return;
             }
             accounts[i].balance += amount;
-            printf("Deposit successful. New balance: %.2f\n", accounts[i].balance);
+            printf("Deposit is successful. New balance: %.2f\n", accounts[i].balance);
             return;
         }
     }
@@ -490,7 +490,7 @@ void withdrawMoney() {
     int accNum;
     float amount;
 
-    printf("Enter account number to withdraw from: ");
+    printf("Enter the account number to withdraw from: ");
     scanf("%d", &accNum);
 
     for (int i = 0; i < accCount; i++) {
@@ -563,7 +563,7 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    float principal, rate, time, simpleInterest;
+    double principal, rate, time, simpleInterest;
 
     // Prompt user to enter principal amount
     printf("Enter the principal amount: ");
@@ -585,4 +585,3 @@ int main() {
 
     return 0;
 }
-
