@@ -535,7 +535,7 @@ void menu() {
     printf("3. Deposit Money\n");
     printf("4. Withdraw Money\n");
     printf("5. Search Account\n");
-    printf("6. Exit\n");
+    printf("6. please Exit\n");
     printf("--------------------------------\n");
 }
 
@@ -554,7 +554,7 @@ int main() {
             case 4: withdrawMoney(); break;
             case 5: searchAccount(); break;
             case 6: printf("Thank you for using our system!\n"); exit(0);
-            default: printf("Invalid choice. Try again.\n");
+            default: printf("Invalid choice exit. Try again.\n");
         }
     }
 
@@ -563,25 +563,25 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    double principal, rate, time, simpleInterest;
+    float principal, rate, time, simpleInterest;
 
     // Prompt user to enter principal amount
-    printf("Enter the principal amount: ");
+    printf("Enter principal amount: ");
     scanf("%f", &principal);
 
     // Prompt user to enter rate of interest
-    printf("Enter the rate of interest (in %%): ");
+    printf("Enter  rate of interest (in %%): ");
     scanf("%f", &rate);
 
     // Prompt user to enter time period
-    printf("Enter the time period (in years): ");
+    printf("Enter  time period (in years): ");
     scanf("%f", &time);
 
     // Calculate simple interest
     simpleInterest = (principal * rate * time) / 100;
 
     // Display the result
-    printf("Simple Interest = %.2f\n", simpleInterest);
-
-    return 0;
+    printf("Simple Interest = %.2f\n", simpleInterestv
+		    return 0;
 }
+
