@@ -559,29 +559,40 @@ int main() {
     }
 
     return 0;
+
 }
 #include <stdio.h>
 
 int main() {
-    float principal, rate, time, simpleInterest;
+    int math, physics, chemistry, total_all, total_mp;
 
-    // Prompt user to enter principal amount
-    printf("Enter principal amount: ");
-    scanf("%f", &principal);
+    // Input marks
+    printf("Enter marks obtained in Mathematics: ");
+    scanf("%d", &math);
+    printf("Enter marks obtained in Physics: ");
+    scanf("%d", &physics);
+    printf("Enter marks obtained in Chemistry: ");
+    scanf("%d", &chemistry);
 
-    // Prompt user to enter rate of interest
-    printf("Enter  rate of interest (in %%): ");
-    scanf("%f", &rate);
+    // Calculate totals
+    total_all = math + physics + chemistry;
+    total_mp = math + physics;
 
-    // Prompt user to enter time period
-    printf("Enter  time period (in years): ");
-    scanf("%f", &time);
+    // Display totals
+    printf("Total marks (Maths + Physics + Chemistry): %d\n", total_all);
+    printf("Total marks (Maths + Physics): %d\n", total_mp);
 
-    // Calculate simple interest
-    simpleInterest = (principal * rate * time) / 100;
+    // Check eligibility
+    if (math >= 65 && physics >= 55 && chemistry >= 50) {
+        if (total_all >= 190 || total_mp >= 140) {
+            printf("The candidate is eligible for admission.\n");
+        } else {
+            printf("The candidate is not eligible for admission.\n");
+        }
+    } else {
+        printf("The candidate is not eligible for admission.\n");
+    }
 
-    // Display the result
-    printf("Simple Interest = %.2f\n", simpleInterestv
-		    return 0;
+    return 0;
 }
 
