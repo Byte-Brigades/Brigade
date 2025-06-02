@@ -478,7 +478,7 @@ void depositMoney() {
                 return;
             }
             accounts[i].balance += amount;
-            printf("Deposit successful. New balance: %.2f\n", accounts[i].balance);
+            printf("Deposit is successful. New balance: %.2f\n", accounts[i].balance);
             return;
         }
     }
@@ -490,7 +490,7 @@ void withdrawMoney() {
     int accNum;
     float amount;
 
-    printf("Enter account number to withdraw from: ");
+    printf("Enter the account number to withdraw from: ");
     scanf("%d", &accNum);
 
     for (int i = 0; i < accCount; i++) {
@@ -535,7 +535,7 @@ void menu() {
     printf("3. Deposit Money\n");
     printf("4. Withdraw Money\n");
     printf("5. Search Account\n");
-    printf("6. Exit\n");
+    printf("6. please Exit\n");
     printf("--------------------------------\n");
 }
 
@@ -554,34 +554,44 @@ int main() {
             case 4: withdrawMoney(); break;
             case 5: searchAccount(); break;
             case 6: printf("Thank you for using our system!\n"); exit(0);
-            default: printf("Invalid choice. Try again.\n");
+            default: printf("Invalid choice exit. Try again.\n");
         }
     }
 
     return 0;
+
 }
 #include <stdio.h>
 
 int main() {
-    float principal, rate, time, simpleInterest;
+    int math, physics, chemistry, total_all, total_mp;
 
-    // Prompt user to enter principal amount
-    printf("Enter the principal amount: ");
-    scanf("%f", &principal);
+    // Input marks
+    printf("Enter marks obtained in Mathematics: ");
+    scanf("%d", &math);
+    printf("Enter marks obtained in Physics: ");
+    scanf("%d", &physics);
+    printf("Enter marks obtained in Chemistry: ");
+    scanf("%d", &chemistry);
 
-    // Prompt user to enter rate of interest
-    printf("Enter the rate of interest (in %%): ");
-    scanf("%f", &rate);
+    // Calculate totals
+    total_all = math + physics + chemistry;
+    total_mp = math + physics;
 
-    // Prompt user to enter time period
-    printf("Enter the time period (in years): ");
-    scanf("%f", &time);
+    // Display totals
+    printf("Total marks (Maths + Physics + Chemistry): %d\n", total_all);
+    printf("Total marks (Maths + Physics): %d\n", total_mp);
 
-    // Calculate simple interest
-    simpleInterest = (principal * rate * time) / 100;
-
-    // Display the result
-    printf("Simple Interest = %.2f\n", simpleInterest);
+    // Check eligibility
+    if (math >= 65 && physics >= 55 && chemistry >= 50) {
+        if (total_all >= 190 || total_mp >= 140) {
+            printf("The candidate is eligible for admission.\n");
+        } else {
+            printf("The candidate is not eligible for admission.\n");
+        }
+    } else {
+        printf("The candidate is not eligible for admission.\n");
+    }
 
     return 0;
 }
