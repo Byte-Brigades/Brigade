@@ -96,7 +96,8 @@ int main() {
     printf(" 1. Breakfast\n");
     printf(" 2. Lunch\n");
     printf(" 3. Dinner\n");
-    printf(" 4. Exit\n");
+    printf(" 4.snacks\n");
+    printf(" 5. Exit\n");
     printf("====================================\n");
 
     printf("Enter your choice (1-4): ");
@@ -128,12 +129,19 @@ int main() {
             printf("4. Curd Rice..............Rs.70\n");
             break;
 
-        case 4:
+	case 4;
+	printf("\n--- snacks Menu ---\n");
+	printf("1. samosa...........Rs.15\n");
+	printf("2. kachori..........RS.20\n");
+	printf("3. aloo bonda........Rs.25\n");
+	break;
+
+        case 5:
             printf("Thank you for visiting Hotel XYZ!\n");
             break;
 
         default:
-            printf("Invalid choice. Please enter a number between 1 and 4.\n");
+            printf("Invalid choice. Please enter a number between 1 and 5.\n");
     }
 
     return 0;
@@ -519,7 +527,7 @@ void depositMoney() {
                 return;
             }
             accounts[i].balance += amount;
-            printf("Deposit successful. New balance: %.2f\n", accounts[i].balance);
+            printf("Deposit is successful. New balance: %.2f\n", accounts[i].balance);
             return;
         }
     }
@@ -531,7 +539,7 @@ void withdrawMoney() {
     int accNum;
     float amount;
 
-    printf("Enter account number to withdraw from: ");
+    printf("Enter the account number to withdraw from: ");
     scanf("%d", &accNum);
 
     for (int i = 0; i < accCount; i++) {
@@ -576,7 +584,7 @@ void menu() {
     printf("3. Deposit Money\n");
     printf("4. Withdraw Money\n");
     printf("5. Search Account\n");
-    printf("6. Exit\n");
+    printf("6. please Exit\n");
     printf("--------------------------------\n");
 }
 
@@ -595,7 +603,7 @@ int main() {
             case 4: withdrawMoney(); break;
             case 5: searchAccount(); break;
             case 6: printf("Thank you for using our system!\n"); exit(0);
-            default: printf("Invalid choice. Try again.\n");
+            default: printf("Invalid choice exit. Try again.\n");
         }
     }
 
@@ -603,7 +611,6 @@ int main() {
 
 }
 #include <stdio.h>
-
 #define MAX_CANDIDATES 5
 
 int main() {
@@ -650,6 +657,37 @@ int main() {
 
     
     printf("\nCR Elected: %s with %d votes!\n", candidates[winnerIndex], maxVotes);
+
+
+int main() {
+    int math, physics, chemistry, total_all, total_mp;
+
+    // Input marks
+    printf("Enter marks obtained in Mathematics: ");
+    scanf("%d", &math);
+    printf("Enter marks obtained in Physics: ");
+    scanf("%d", &physics);
+    printf("Enter marks obtained in Chemistry: ");
+    scanf("%d", &chemistry);
+
+    // Calculate totals
+    total_all = math + physics + chemistry;
+    total_mp = math + physics;
+
+    // Display totals
+    printf("Total marks (Maths + Physics + Chemistry): %d\n", total_all);
+    printf("Total marks (Maths + Physics): %d\n", total_mp);
+
+    // Check eligibility
+    if (math >= 65 && physics >= 55 && chemistry >= 50) {
+        if (total_all >= 190 || total_mp >= 140) {
+            printf("The candidate is eligible for admission.\n");
+        } else {
+            printf("The candidate is not eligible for admission.\n");
+        }
+    } else {
+        printf("The candidate is not eligible for admission.\n");
+    }
 
     return 0;
 }
