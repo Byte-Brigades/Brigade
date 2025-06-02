@@ -139,6 +139,58 @@ int main() {
     return 0;
 }
 #include <stdio.h>
+
+#define MAX_CANDIDATES 5
+
+int main() {
+    char candidates[MAX_CANDIDATES][50] = {
+        "Alice",
+        "Bob",
+        "Charlie",
+        "Diana",
+        "Eve"
+    };
+    int votes[MAX_CANDIDATES] = {0};
+    int numVoters, vote, i, maxVotes = 0, winnerIndex = -1;
+
+    printf("Welcome to CR Election Voting System\n");
+    printf("Enter number of voters: ");
+    scanf("%d", &numVoters);
+
+    printf("\nCandidates:\n");
+    for (i = 0; i < MAX_CANDIDATES; i++) {
+        printf("%d. %s\n", i + 1, candidates[i]);
+    }
+
+    // Voting process
+    for (i = 0; i < numVoters; i++) {
+        printf("Voter %d, enter your vote (1-%d): ", i + 1, MAX_CANDIDATES);
+        scanf("%d", &vote);
+
+        if (vote >= 1 && vote <= MAX_CANDIDATES) {
+            votes[vote - 1]++;
+        } else {
+            printf("Invalid vote! Skipped.\n");
+        }
+    }
+
+    // Display vote count
+    printf("\nVote Count:\n");
+    for (i = 0; i < MAX_CANDIDATES; i++) {
+        printf("%s: %d votes\n", candidates[i], votes[i]);
+        if (votes[i] > maxVotes) {
+            maxVotes = votes[i];
+            winnerIndex = i;
+        }
+    }
+
+    // Announce winner
+    printf("\nCR Elected: %s with %d votes!\n", candidates[winnerIndex], maxVotes);
+
+    return 0;
+}
+
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -204,9 +256,7 @@ void searchStudent() {
         }
     }
     printf("Student with roll number %d not found.\n", roll);
-}
 
-// Function to delete a student
 void deleteStudent() {
     int roll;
     printf("Enter roll number to delete: ");
@@ -229,7 +279,6 @@ void deleteStudent() {
     }
 }
 
-// Menu function
 void menu() {
     printf("\n--- Student Management System ---\n");
     printf("1. Add Student\n");
@@ -551,4 +600,57 @@ int main() {
     }
 
     return 0;
+
 }
+#include <stdio.h>
+
+#define MAX_CANDIDATES 5
+
+int main() {
+    char candidates[MAX_CANDIDATES][50] = {
+        "Alice",
+        "Bob",
+        "Charlie",
+        "Diana",
+        "Eve"
+    };
+    int votes[MAX_CANDIDATES] = {0};
+    int numVoters, vote, i, maxVotes = 0, winnerIndex = -1;
+
+    printf("Welcome to CR Election Voting System\n");
+    printf("Enter number of voters: ");
+    scanf("%d", &numVoters);
+
+    printf("\nCandidates:\n");
+    for (i = 0; i < MAX_CANDIDATES; i++) {
+        printf("%d. %s\n", i + 1, candidates[i]);
+    }
+
+    // Voting process
+    for (i = 0; i < numVoters; i++) {
+        printf("Voter %d, enter your vote (1-%d): ", i + 1, MAX_CANDIDATES);
+        scanf("%d", &vote);
+
+        if (vote >= 1 && vote <= MAX_CANDIDATES) {
+            votes[vote - 1]++;
+        } else {
+            printf("Invalid vote! Skipped.\n");
+        }
+    }
+
+    
+    printf("\nVote Count:\n");
+    for (i = 0; i < MAX_CANDIDATES; i++) {
+        printf("%s: %d votes\n", candidates[i], votes[i]);
+        if (votes[i] > maxVotes) {
+            maxVotes = votes[i];
+            winnerIndex = i;
+        }
+    }
+
+    
+    printf("\nCR Elected: %s with %d votes!\n", candidates[winnerIndex], maxVotes);
+
+    return 0;
+}
+
